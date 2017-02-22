@@ -8,7 +8,7 @@ using NationBuilder.Models;
 namespace NationBuilder.Migrations
 {
     [DbContext(typeof(NationBuilderDbContext))]
-    [Migration("20170222172443_Initial")]
+    [Migration("20170222183850_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -329,7 +329,7 @@ namespace NationBuilder.Migrations
             modelBuilder.Entity("NationBuilder.Models.Nation", b =>
                 {
                     b.HasOne("NationBuilder.Models.ApplicationUser", "AppUser")
-                        .WithMany()
+                        .WithMany("Nations")
                         .HasForeignKey("AppUserId");
 
                     b.HasOne("NationBuilder.Models.Government", "Government")

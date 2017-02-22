@@ -328,7 +328,7 @@ namespace NationBuilder.Migrations
             modelBuilder.Entity("NationBuilder.Models.Nation", b =>
                 {
                     b.HasOne("NationBuilder.Models.ApplicationUser", "AppUser")
-                        .WithMany()
+                        .WithMany("Nations")
                         .HasForeignKey("AppUserId");
 
                     b.HasOne("NationBuilder.Models.Government", "Government")

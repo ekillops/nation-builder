@@ -24,9 +24,16 @@ namespace NationBuilder.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ApplicationUser user = await _userManager.GetUserAsync(User);
+            if (user != null)
+            {
+                ApplicationUser userData = _db.Users.Include(u => u.Nations)
+                    .FirstOrDefault(u => u.Id == user.Id);
+                return View(userData);
+            }
+            return View(new List<Nation>() { });
         }
 
 
@@ -42,7 +49,7 @@ namespace NationBuilder.Controllers
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                Microsoft.AspNetCore.Identity.SignInResult loginResult = await _signInManager.PasswordSignInAsync(user.Email, model.password, isPersistent: true, lockoutOnFailure: false);
+                Microsoft.AspNetCore.Identity.SignInResult loginResult = await _signInManager.PasswordSignInAsync(user.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
                 if (loginResult.Succeeded)
                 {
                     return RedirectToAction("Index");

@@ -9,6 +9,7 @@ namespace NationBuilder.Models
         public DbSet<Structure> Structures { get; set; }
         public DbSet<Nation> Nations { get; set; }
         public DbSet<Government> Governments { get; set; }
+        public new DbSet<ApplicationUser> Users { get; set; }
 
         public NationBuilderDbContext()
         {

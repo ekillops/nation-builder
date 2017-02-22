@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "User Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using NationBuilder.Models
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>@Model.Name Account Settings</h1>
+    <hr />
+    <h2>My Nations</h2>
+    <hr />
+    <div class="row">
+        @foreach (Nation nation in Model.Nations)
+        {
+            <div class="col s12 m4">
+                <a href="/Nations/Details/@nation.Id">
+                    <div class="card hoverable blue-grey darken-2">
+                        <div class="card-content">
+                            <p class="card-title center">@nation.Name</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <h1>Login or Register a New Account</h1>
+    <hr />
+    <p>@Html.ActionLink("Register", "Register")</p>
+    <p>@Html.ActionLink("Log in", "Login")</p>
+}
