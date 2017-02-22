@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+@using System.Security.Claims
+@using NationBuilder.Controllers
+@using NationBuilder.Models
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @* Materialize/CSS *@
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/Content/css/materialize.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/styles.css" rel="stylesheet" type="text/css" />
+    @* jQuery *@
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    @* Materialize JS *@
+    <script src="~/Content/js/materialize.js"></script>
+    @* Validation Scripts *@
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/js/materialize-jquery.js" type="text/javascript"></script>
+</head>
+<body>
+    <nav class="white">
+        <div class="nav-wrapper">
+            <div class="container">
+                <a asp-controller="Home" asp-action="Index"
+                   class="brand-logo blue-text darken-4">Dystopia Builder</a>
+                <ul class="right hide-on-med-and-down">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><span class="grey-text">@User.Identity.Name</span></li>
+                        <li><a asp-controller="Account" asp-action="Logout">Log Out</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-controller="Account" asp-action="Signup">Signup</a></li>
+                        <li><a asp-controller="Account" asp-action="Login">Log In</a></li>
+                    }
+                </ul>
+                <a href="#" data-activates="hamburger" class="button-collapse right"><i class="material-icons">menu</i></a>
+                <ul class="side-nav" id="hamburger">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-controller="Account" asp-action="Logout">Log Out</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-controller="Account" asp-action="Signup">Signup</a></li>
+                        <li><a asp-controller="Account" asp-action="Login">Log In</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    @* Parallax one *@
+    <div id="index-banner" class="parallax-container">
+        <div class="parallax"><img src="~/Content/img/dystopia.jpg" alt="dystopia"></div>
+    </div>
+    @* Main Body *@
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    @* Parallax two *@
+    @*<div class="parallax-container">
+        <div class="parallax"><img src="~/Content/img/Nets.png" alt="Nets"></div>
+    </div>*@
+
+
+    <footer class="page-footer white">
+        <div class="footer-copyright">
+            <div class="container right-align">
+                <span class="grey-text darken-1">© 2017 Nation Builder. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
