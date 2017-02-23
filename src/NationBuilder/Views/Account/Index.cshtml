@@ -14,10 +14,11 @@
         @foreach (Nation nation in Model.Nations)
         {
             <div class="col s12 m4">
-                <a href="/Nations/Details/@nation.Id">
-                    <div class="card hoverable blue-grey darken-2">
-                        <div class="card-content">
+                <a href="/Nation/Details/@nation.Id">
+                    <div class="card hoverable blue-grey">
+                        <div class="card-content grey-text text-lighten-4">
                             <p class="card-title center">@nation.Name</p>
+                            <p class="center">Turn: @nation.Turn</p>
                         </div>
                     </div>
                 </a>

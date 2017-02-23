@@ -232,9 +232,11 @@ namespace NationBuilder.Migrations
 
                     b.Property<int>("Economy");
 
-                    b.Property<int?>("GovernmentId");
+                    b.Property<int?>("GovernmentId")
+                        .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<int>("Population");
 
@@ -333,7 +335,8 @@ namespace NationBuilder.Migrations
 
                     b.HasOne("NationBuilder.Models.Government", "Government")
                         .WithMany()
-                        .HasForeignKey("GovernmentId");
+                        .HasForeignKey("GovernmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("NationBuilder.Models.Structure", b =>

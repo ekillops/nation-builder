@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using NationBuilder.Models
+@model Nation
+
+<h1>@Model.Name</h1>
+<h2>@Model.Government.Name</h2>
+<hr />
+
+<p>Nation Economy: @Model.Economy</p>
+<p>Nation Resources: @Model.Resources</p>
+<p>Population: @Model.Population</p>
+<p>Your Approval Rating: @Model.ApprovalRating</p>

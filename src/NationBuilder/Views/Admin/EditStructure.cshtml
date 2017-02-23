@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Add Structure";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using NationBuilder.Models
+@model Structure
+
+<h1>Add Structure</h1>
+
+<form class="row" method="post" asp-controller="Admin" asp-action="AddStructure">
+    <div class="input-field col s12 m6">
+        <label asp-for="Name">Structure Name</label>
+        <input asp-for="Name" />
+    </div>
+    <div class="input-field col s12">
+        <label asp-for="Description">Structure Description</label>
+        <input asp-for="Description" />
+    </div>
+    <div class="input-field col s6 m3">
+        <label asp-for="EconomyModifier">Economy Modifier</label>
+        <input asp-for="EconomyModifier" />
+    </div>
+    <div class="input-field col s6 m3">
+        <label asp-for="ResourcesModifier">Resource Modifier</label>
+        <input asp-for="ResourcesModifier" />
+    </div>
+    <div class="input-field col s6 m3">
+        <label asp-for="PopulationModifier">Population Modifier</label>
+        <input asp-for="PopulationModifier" />
+    </div>
+    <div class="input-field col s6 m3">
+        <label asp-for="ApprovalModifier">Approval Modifier</label>
+        <input asp-for="ApprovalModifier" />
+    </div>
+    <div class="col s12">
+        <button class="btn grey darken-1 waves-effect" type="submit">Add</button>
+    </div>
+</form>

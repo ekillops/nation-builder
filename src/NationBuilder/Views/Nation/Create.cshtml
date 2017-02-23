@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Create New Nation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using NationBuilder.Models
+@model Nation
+
+<h1>Create new nation</h1>
+<hr />
+<form method="post" asp-controller="Nation" asp-action="Create">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="input-field">
+        <label asp-for="Name">Nation Name</label>
+        <input asp-for="Name">
+    </div>
+    <div class="input-field">
+        <select name="governmentId">
+            <option value="" disabled selected>Choose your government</option>
+            @foreach(Government government in ViewBag.Governments)
+            {
+                <option value="@government.Id">@government.Name</option>
+            }
+        </select>
+        <label asp-for="Government">Government Type</label>
+    </div>
+    <button class="btn grey darken-1 waves-effect" type="submit">Create</button>
+</form>
+<br /><br />

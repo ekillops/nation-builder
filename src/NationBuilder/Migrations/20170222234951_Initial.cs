@@ -195,8 +195,8 @@ namespace NationBuilder.Migrations
                     AppUserId = table.Column<string>(nullable: true),
                     ApprovalRating = table.Column<int>(nullable: false),
                     Economy = table.Column<int>(nullable: false),
-                    GovernmentId = table.Column<int>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    GovernmentId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
                     Population = table.Column<int>(nullable: false),
                     Resources = table.Column<int>(nullable: false),
                     Turn = table.Column<int>(nullable: false)
@@ -215,7 +215,7 @@ namespace NationBuilder.Migrations
                         column: x => x.GovernmentId,
                         principalTable: "Governments",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
