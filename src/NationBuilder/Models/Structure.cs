@@ -12,9 +12,14 @@ namespace NationBuilder.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public int EconomyCost { get; set; }
+        public int ResourcesCost { get; set; }
+        public int PopulationCost { get; set; }
+        public int ApprovalCost { get; set; }
         public int EconomyModifier { get; set; }
         public int ResourcesModifier { get; set; }
         public int PopulationModifier { get; set; }
         public int ApprovalModifier { get; set; }
+        public virtual List<NationStructure> NationsStructures { get; set; }
     }
 }

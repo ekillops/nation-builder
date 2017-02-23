@@ -6,8 +6,9 @@ namespace NationBuilder.Models
     public class NationBuilderDbContext : IdentityDbContext
     {
         public DbSet<Event> Events { get; set; }
-        public DbSet<Structure> Structures { get; set; }
         public DbSet<Nation> Nations { get; set; }
+        public DbSet<NationStructure> NationsStructures { get; set; }
+        public DbSet<Structure> Structures { get; set; }
         public DbSet<Government> Governments { get; set; }
         public new DbSet<ApplicationUser> Users { get; set; }
 

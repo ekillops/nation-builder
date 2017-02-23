@@ -13,7 +13,7 @@ namespace NationBuilder.Models
         public string Name { get; set; }
         [Required]
         public virtual Government Government { get; set; }
-        public virtual List<Structure> Structures { get; set; }
+        public virtual List<NationStructure> NationsStructures { get; set; }
         public int Economy { get; set; }
         public int Resources { get; set; }
         public int Population { get; set; }

@@ -8,9 +8,10 @@ using NationBuilder.Models;
 namespace NationBuilder.Migrations
 {
     [DbContext(typeof(NationBuilderDbContext))]
-    partial class NationBuilderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170223190417_AddManyToManyNationsStructures")]
+    partial class AddManyToManyNationsStructures
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -276,23 +277,15 @@ namespace NationBuilder.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("ApprovalCost");
-
                     b.Property<int>("ApprovalModifier");
 
                     b.Property<string>("Description");
-
-                    b.Property<int>("EconomyCost");
 
                     b.Property<int>("EconomyModifier");
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("PopulationCost");
-
                     b.Property<int>("PopulationModifier");
-
-                    b.Property<int>("ResourcesCost");
 
                     b.Property<int>("ResourcesModifier");
 

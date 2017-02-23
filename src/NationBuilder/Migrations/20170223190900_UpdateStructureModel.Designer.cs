@@ -8,9 +8,10 @@ using NationBuilder.Models;
 namespace NationBuilder.Migrations
 {
     [DbContext(typeof(NationBuilderDbContext))]
-    partial class NationBuilderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170223190900_UpdateStructureModel")]
+    partial class UpdateStructureModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")

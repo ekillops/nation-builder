@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace NationBuilder.Models
 {
@@ -26,7 +23,8 @@ namespace NationBuilder.Models
         public IQueryable<Structure> Structures { get {return db.Structures; } }
         public IQueryable<Nation> NationsIncludeRelated { get {
                 return db.Nations
-                    .Include(n => n.Structures)
+                    .Include(n => n.NationsStructures)
+                        .ThenInclude(ns => ns.Structure)
                     .Include(n => n.Government);
             } }
         public IQueryable<Nation> Nations { get { return db.Nations; } }
@@ -44,7 +42,7 @@ namespace NationBuilder.Models
 
         public Nation Edit(Nation nation)
         {
-            db.Entry(nation).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.Entry(nation).State = EntityState.Modified;
             db.SaveChanges();
             return nation;
         }
@@ -72,7 +70,7 @@ namespace NationBuilder.Models
 
         public Event Edit(Event nation)
         {
-            db.Entry(nation).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.Entry(nation).State = EntityState.Modified;
             db.SaveChanges();
             return nation;
         }
@@ -100,7 +98,7 @@ namespace NationBuilder.Models
 
         public Government Edit(Government nation)
         {
-            db.Entry(nation).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.Entry(nation).State = EntityState.Modified;
             db.SaveChanges();
             return nation;
         }
@@ -128,7 +126,7 @@ namespace NationBuilder.Models
 
         public Structure Edit(Structure nation)
         {
-            db.Entry(nation).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.Entry(nation).State = EntityState.Modified;
             db.SaveChanges();
             return nation;
         }

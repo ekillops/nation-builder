@@ -35,11 +35,28 @@ namespace NationBuilder.Migrations
             new Structure()
             {
                 Name = "Propaganda Center",
-                Description = "Make your people think they're happy.",
+                Description = "Make your people think they're happy.\nCost:\nEconomy: 3, Resources: 3",
                 EconomyModifier = 0,
                 ResourcesModifier = 0,
                 PopulationModifier = 0,
-                ApprovalModifier = 1
+                ApprovalModifier = 1,
+                EconomyCost = 3,
+                ResourcesCost = 3,
+                PopulationCost = 0,
+                ApprovalCost = 0
+            },
+            new Structure()
+            {
+                Name = "Monument to you!",
+                Description = "Demand the peoples respect.\nCost:\nEconomy: 4, Resources: 4",
+                EconomyModifier = 0,
+                ResourcesModifier = 0,
+                PopulationModifier = 0,
+                ApprovalModifier = 3,
+                EconomyCost = 4,
+                ResourcesCost = 4,
+                PopulationCost = 0,
+                ApprovalCost = 0
             }
         };
 

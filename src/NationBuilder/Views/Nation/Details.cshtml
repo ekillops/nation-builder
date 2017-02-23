@@ -23,10 +23,10 @@
                         url: '@Url.Action("NextTurn", "Nation", new { id = Model.Id })',
                         success: function (result) {
                             console.log(result);
-                            $("#economy").text(result.Nation.Economy);
-                            $("#resources").text(result.Nation.Resources);
-                            $("#population").text(result.Nation.Population);
-                            $("#approval").text(result.Nation.ApprovalRating);
+                            $("#economy").html(result.Nation.economy);
+                            $("#resources").html(result.Nation.resources);
+                            $("#population").html(result.Nation.population);
+                            $("#approval").html(result.Nation.approvalRating);
                             $("#turn-button").text("Next Turn");
 
                             $("#event").show();
@@ -68,10 +68,10 @@
         </div>
         <div class="card-action">
             <div class="row">
-                <p class="col s12 m3" id="event-economy-container">Economy Modifier: <span id="event-economy"></span></p>
-                <p class="col s12 m3" id="event-resources-container">Resources Modifier: <span id="event-resources"></span></p>
-                <p class="col s12 m3" id="event-population-container">Population Modifier: <span id="event-population"></span></p>
-                <p class="col s12 m3" id="event-approval-container">Approval Modifier: <span id="event-approval"></span></p>
+                <p class="col s12 m3" id="event-economy-container">Economy: <span id="event-economy"></span></p>
+                <p class="col s12 m3" id="event-resources-container">Resources: <span id="event-resources"></span></p>
+                <p class="col s12 m3" id="event-population-container">Population: <span id="event-population"></span></p>
+                <p class="col s12 m3" id="event-approval-container">Approval: <span id="event-approval"></span></p>
             </div>
         </div>
     </div>

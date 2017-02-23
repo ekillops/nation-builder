@@ -60,14 +60,38 @@ namespace NationBuilder.Controllers
         public IActionResult NextTurn(int id)
         {
             Nation nation = nationRepo.NationsIncludeRelated.FirstOrDefault(n => n.Id == id);
+            List<Event> allEvents = nationRepo.Events.ToList();
+            Event thisEvent = allEvents[new Random().Next(allEvents.Count)];
+
+            Dictionary<string, int> turnModifiers = new Dictionary<string, int>();
+            turnModifiers["Economy"] = nation.Government.EconomyModifier;
+            turnModifiers["Resources"] = nation.Government.ResourcesModifier;
+            turnModifiers["Population"] = nation.Government.PopulationModifier;
+            turnModifiers["Approval"] = nation.Government.ApprovalModifier;
+
+            List<Structure> allStructures = new List<Structure> { };
+
+            foreach (NationStructure ns in nation.NationsStructures)
+            {
+                turnModifiers["Economy"] += ns.Structure.EconomyModifier;
+                turnModifiers["Resources"] += ns.Structure.ResourcesModifier;
+                turnModifiers["Population"] += ns.Structure.PopulationModifier;
+                turnModifiers["Approval"] += ns.Structure.ApprovalModifier;
+                allStructures.Append(ns.Structure);
+            }
+
             nation.Turn++;
+            nation.Economy += thisEvent.EconomyModifier + turnModifiers["Economy"];
+            nation.Resources += thisEvent.ResourcesModifier + turnModifiers["Resources"];
+            nation.Population += thisEvent.PopulationModifier + turnModifiers["Population"];
+            nation.ApprovalRating += thisEvent.ApprovalModifier + turnModifiers["Approval"];
             nationRepo.Edit(nation);
 
-            List<Event> allEvents = nationRepo.Events.ToList();
-
             Dictionary<string, object> result = new Dictionary<string, object>();
-            result["Event"] = allEvents[new Random().Next(allEvents.Count)];
+            result["Event"] = thisEvent;
             result["Nation"] = nation;
+            result["TurnModifiers"] = turnModifiers;
+            result["Structures"] = allStructures;
 
             return Json(result);
         }
