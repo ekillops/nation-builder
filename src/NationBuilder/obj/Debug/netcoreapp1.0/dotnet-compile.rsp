@@ -208,12 +208,15 @@ C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Controllers\AdminContr
 C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Controllers\NationController.cs
 C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Migrations\20170222234951_Initial.cs
 C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Migrations\20170222234951_Initial.Designer.cs
+C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Migrations\20170223183822_SeedDataMigration.cs
+C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Migrations\20170223183822_SeedDataMigration.Designer.cs
 C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Migrations\NationBuilderDbContextModelSnapshot.cs
 C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Models\ApplicationUser.cs
 C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Models\Event.cs
 C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Models\Government.cs
 C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Models\Nation.cs
 C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Models\NationBuilderDbContext.cs
+C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Models\SeedData.cs
 C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Models\Structure.cs
 C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Models\Repositories\EFNationRepository.cs
 C:\Users\epicodus\Desktop\NationBuilder\src\NationBuilder\Models\Repositories\INationRepository.cs
