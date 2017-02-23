@@ -1,15 +1,77 @@
 ﻿@{
     ViewData["Title"] = Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string buttonText = (Model.Turn > 0) ? "Next Turn" : "Start Game";
 }
 @using NationBuilder.Models
 @model Nation
 
 <h1>@Model.Name</h1>
-<h2>@Model.Government.Name</h2>
+<div class="row valign-wrapper">
+    <div class="col s12 m6">
+        <h2>@Model.Government.Name</h2>
+    </div>
+    <div class="col s12 m6 valign">
+        <button class="btn waves-effect grey darken-1 right" id="turn-button">@buttonText</button>
+
+        <!--"Next turn" AJAX call-->
+        <script>
+            $(function () {
+                $("#turn-button").click(function () {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("NextTurn", "Nation", new { id = Model.Id })',
+                        success: function (result) {
+                            console.log(result);
+                            $("#economy").text(result.Nation.Economy);
+                            $("#resources").text(result.Nation.Resources);
+                            $("#population").text(result.Nation.Population);
+                            $("#approval").text(result.Nation.ApprovalRating);
+
+                            $("#event").show();
+                            $("#event-title").text(result.Event.name);
+                            $("#event-description").text(result.Event.description);
+                            $("#event-economy").text(result.Event.economyModifier);
+                            $("#event-resources").text(result.Event.resourcesModifier);
+                            $("#event-population").text(result.Event.populationModifier);
+                            $("#event-approval").text(result.Event.approvalModifier);
+                        }
+                    })
+                })
+            })
+        </script>
+
+    </div>
+</div>
 <hr />
 
-<p>Nation Economy: @Model.Economy</p>
-<p>Nation Resources: @Model.Resources</p>
-<p>Population: @Model.Population</p>
-<p>Your Approval Rating: @Model.ApprovalRating</p>
+<div class="row">
+    <div class="col s12 m4">
+        <p>Nation Economy: <span class="stat-variable" id="economy">@Model.Economy</span></p>
+        <p>Nation Resources: <span class="stat-variable" id="resources">@Model.Resources</span></p>
+        <p>Population: <span class="stat-variable" id="population">@Model.Population</span></p>
+        <p>Your Approval Rating: <span class="stat-variable" id="approval">@Model.ApprovalRating</span></p>
+    </div>
+    <div class="col s12 m4">
+        <!--List of structures-->
+    </div>
+    <div class="col s12 m4">
+        <!--Structures-->
+    </div>
+</div>
+<div class="row">
+    <div id="event" class="card">
+        <div class="card-content">
+            <p id="event-title"></p>
+            <p id="event-description"></p>
+        </div>
+        <div class="card-action">
+            <div class="row">
+                <p class="col s12 m3" id="event-economy-container">Economy Modifier: <span id="event-economy"></span></p>
+                <p class="col s12 m3" id="event-resources-container">Resources Modifier: <span id="event-resources"></span></p>
+                <p class="col s12 m3" id="event-population-container">Population Modifier: <span id="event-population"></span></p>
+                <p class="col s12 m3" id="event-approval-container">Approval Modifier: <span id="event-approval"></span></p>
+            </div>
+        </div>
+    </div>
+</div>

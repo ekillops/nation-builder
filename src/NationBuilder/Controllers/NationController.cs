@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using NationBuilder.Models;
 using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
 
 namespace NationBuilder.Controllers
 {
@@ -52,6 +54,22 @@ namespace NationBuilder.Controllers
         {
             Nation nation = nationRepo.NationsIncludeRelated.FirstOrDefault(n => n.Id == id);
             return View(nation);
+        }
+
+        [HttpPost]
+        public IActionResult NextTurn(int id)
+        {
+            Nation nation = nationRepo.NationsIncludeRelated.FirstOrDefault(n => n.Id == id);
+            nation.Turn++;
+            nationRepo.Edit(nation);
+
+            List<Event> allEvents = nationRepo.Events.ToList();
+
+            Dictionary<string, object> result = new Dictionary<string, object>();
+            result["Event"] = allEvents[new Random().Next(allEvents.Count)];
+            result["Nation"] = nation;
+
+            return Json(result);
         }
     }
 }

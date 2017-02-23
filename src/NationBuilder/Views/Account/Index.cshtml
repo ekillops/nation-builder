@@ -8,13 +8,13 @@
 {
     <h1>@Model.Name Account Settings</h1>
     <hr />
-    <h2>My Nations</h2>
+    <h2>My Nations <span class="right"><small><a asp-controller="Nation" asp-action="Create">Create New Nation</a></small></span></h2>
     <hr />
     <div class="row">
         @foreach (Nation nation in Model.Nations)
         {
             <div class="col s12 m4">
-                <a href="/Nation/Details/@nation.Id">
+                <a asp-controller="Nation" asp-action="Details" asp-route-id="@nation.Id">
                     <div class="card hoverable blue-grey">
                         <div class="card-content grey-text text-lighten-4">
                             <p class="card-title center">@nation.Name</p>
@@ -25,11 +25,12 @@
             </div>
         }
     </div>
+
 }
 else
 {
     <h1>Login or Register a New Account</h1>
     <hr />
-    <p>@Html.ActionLink("Register", "Register")</p>
-    <p>@Html.ActionLink("Log in", "Login")</p>
+    <p><a asp-controller="Account" asp-action="Register">Register</a></p>
+    <p><a asp-controller="Account" asp-action="Login">Login</a></p>
 }

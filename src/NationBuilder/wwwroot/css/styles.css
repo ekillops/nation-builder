@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+#event {
+    display: none;
+}
+
 .brand-logo {
     font-family: 'Roboto Slab', serif;
 }
