@@ -117,11 +117,16 @@ namespace NationBuilder.Models
         }
 
         //Structure Methods
-        public Structure Save(Structure nation)
+        //public List<Structure> GetUnbuilt(Nation nation)
+        //{
+        //    var unbuiltStructures = db.Structures.Except()
+        //}
+
+        public Structure Save(Structure structure)
         {
-            db.Structures.Add(nation);
+            db.Structures.Add(structure);
             db.SaveChanges();
-            return nation;
+            return structure;
         }
 
         public Structure Edit(Structure nation)
@@ -143,5 +148,33 @@ namespace NationBuilder.Models
             db.RemoveRange(db.Structures);
             db.SaveChanges();
         }
+
+        //NationStructure Methods
+        public NationStructure Save(NationStructure nationStructure)
+        {
+            db.NationsStructures.Add(nationStructure);
+            db.SaveChanges();
+            return nationStructure;
+        }
+
+        //public Structure Edit(Structure nation)
+        //{
+        //    db.Entry(nation).State = EntityState.Modified;
+        //    db.SaveChanges();
+        //    return nation;
+        //}
+
+        //public void Remove(Structure nation)
+        //{
+        //    db.Structures.Remove(nation);
+        //    db.SaveChanges();
+        //}
+
+        //public void DeleteAllStructures()
+        //{
+        //    //List<Structure> allStructures = db.Structures.ToList();
+        //    db.RemoveRange(db.Structures);
+        //    db.SaveChanges();
+        //}
     }
 }

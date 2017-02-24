@@ -56,3 +56,10 @@ body {
 main {
     flex: 1 0 auto;
 }
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}

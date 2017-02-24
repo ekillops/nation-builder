@@ -1,0 +1,42 @@
+﻿@using NationBuilder.Models
+@model List<Structure>
+
+<script>
+    $(function () {
+        $('.collapsible').collapsible();
+    });
+</script>
+
+<ul class="collapsible" data-collapsible="accordion">
+    @foreach (Structure structure in Model)
+    {
+        <li>
+            <div class="collapsible-header">
+                <form asp-controller="Nation" asp-action="StructurePurchase" asp-route-id="@structure.Id" method="post">
+                    <input type="hidden" value="@ViewBag.NationId" name="NationId" />
+                    <i class="material-icons">business</i>@structure.Name
+                    <input type="submit" value="Build" class="btn-floating grey darken-1 right" />
+                </form>
+            </div>
+            <div class="collapsible-body">
+                <p>@structure.Description</p>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <p class="col s12">Permanent Modifiers:</p>
+                        <span class="col s12 m3"><i class="material-icons">attach_money</i>: @structure.EconomyModifier</span>
+                        <span class="col s12 m3"><i class="material-icons">grain</i>: @structure.ResourcesModifier</span>
+                        <span class="col s12 m3"><i class="material-icons">supervisor_account</i>: @structure.PopulationModifier</span>
+                        <span class="col s12 m3"><i class="material-icons">thumb_up</i>: @structure.ApprovalModifier</span>
+                    </div>
+                    <div class="col s12 m6">
+                        <p class="col s12">One-Time Costs:</p>
+                        <span class="col s12 m3"><i class="material-icons">attach_money</i>: @structure.EconomyCost</span>
+                        <span class="col s12 m3"><i class="material-icons">grain</i>: @structure.ResourcesCost</span>
+                        <span class="col s12 m3"><i class="material-icons">supervisor_account</i>: @structure.PopulationCost</span>
+                        <span class="col s12 m3"><i class="material-icons">thumb_up</i>: @structure.ApprovalCost</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
+</ul>

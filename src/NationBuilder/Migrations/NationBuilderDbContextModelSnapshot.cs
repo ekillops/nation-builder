@@ -258,9 +258,9 @@ namespace NationBuilder.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("NationId");
+                    b.Property<int>("NationId");
 
-                    b.Property<int?>("StructureId");
+                    b.Property<int>("StructureId");
 
                     b.HasKey("Id");
 
@@ -365,11 +365,13 @@ namespace NationBuilder.Migrations
                 {
                     b.HasOne("NationBuilder.Models.Nation", "Nation")
                         .WithMany("NationsStructures")
-                        .HasForeignKey("NationId");
+                        .HasForeignKey("NationId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("NationBuilder.Models.Structure", "Structure")
                         .WithMany("NationsStructures")
-                        .HasForeignKey("StructureId");
+                        .HasForeignKey("StructureId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

@@ -6,6 +6,21 @@
 @using NationBuilder.Models
 @model Nation
 
+<script>
+    $(function () {
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("StructurePurchase", "Nation", new { id = Model.Id })',
+            success: function (result) {
+                $("#structure-purchase").html(result);
+            },
+            error: function (result) {
+                console.log(result);
+            }
+        })
+    })
+</script>
+
 <h1>@Model.Name</h1>
 <div class="row valign-wrapper">
     <div class="col s12 m6">
@@ -47,31 +62,37 @@
 <hr />
 
 <div class="row">
-    <div class="col s12 m4">
-        <p>Nation Economy: <span class="stat-variable" id="economy">@Model.Economy</span></p>
-        <p>Nation Resources: <span class="stat-variable" id="resources">@Model.Resources</span></p>
-        <p>Population: <span class="stat-variable" id="population">@Model.Population</span></p>
-        <p>Your Approval Rating: <span class="stat-variable" id="approval">@Model.ApprovalRating</span></p>
+    <div class="col s12 m3">
+        <i class="material-icons">attach_money</i> Economy: <span class="stat-variable" id="economy">@Model.Economy</span>
     </div>
-    <div class="col s12 m4">
-        <!--List of structures-->
+    <div class="col s12 m3">
+        <i class="material-icons">grain</i> Resources: <span class="stat-variable" id="resources">@Model.Resources</span>
     </div>
-    <div class="col s12 m4">
-        <!--Structures-->
+    <div class="col s12 m3">
+        <i class="material-icons">supervisor_account</i> Population: <span class="stat-variable" id="population">@Model.Population</span>
+    </div>
+    <div class="col s12 m3">
+        <i class="material-icons">thumb_up</i> Approval Rating: <span class="stat-variable" id="approval">@Model.ApprovalRating</span>
     </div>
 </div>
 <div class="row">
-    <div id="event" class="card">
-        <div class="card-content">
-            <p id="event-title"></p>
-            <p id="event-description"></p>
-        </div>
-        <div class="card-action">
-            <div class="row">
-                <p class="col s12 m3" id="event-economy-container">Economy: <span id="event-economy"></span></p>
-                <p class="col s12 m3" id="event-resources-container">Resources: <span id="event-resources"></span></p>
-                <p class="col s12 m3" id="event-population-container">Population: <span id="event-population"></span></p>
-                <p class="col s12 m3" id="event-approval-container">Approval: <span id="event-approval"></span></p>
+    <div class="col s12" id="structure-purchase">
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div id="event" class="card">
+            <div class="card-content">
+                <p id="event-title"></p>
+                <p id="event-description"></p>
+            </div>
+            <div class="card-action">
+                <div class="row">
+                    <p class="col s12 m3" id="event-economy-container"><i class="material-icons">attach_money</i><span id="event-economy"></span></p>
+                    <p class="col s12 m3" id="event-resources-container"><i class="material-icons">grain</i><span id="event-resources"></span></p>
+                    <p class="col s12 m3" id="event-population-container"><i class="material-icons">supervisor_account</i> <span id="event-population"></span></p>
+                    <p class="col s12 m3" id="event-approval-container"><i class="material-icons">thumb_up</i><span id="event-approval"></span></p>
+                </div>
             </div>
         </div>
     </div>

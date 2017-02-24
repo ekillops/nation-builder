@@ -83,8 +83,7 @@ namespace NationBuilder.Controllers
                 return RedirectToAction("Register");
             }
         }
-
-        [HttpPost]
+        
         public async Task<IActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();

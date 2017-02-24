@@ -37,5 +37,8 @@ namespace NationBuilder.Models
         Event Edit(Event nation);
         void Remove(Event nation);
         void DeleteAllEvents();
+
+        //NationStructure Methods
+        NationStructure Save(NationStructure nationStructure);
     }
 }
